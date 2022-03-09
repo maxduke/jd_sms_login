@@ -1,4 +1,4 @@
-FROM node:16
+FROM node:16-alpine
 MAINTAINER MaxDuke <maxduke@gmail.com>
 
 # Create app directory
