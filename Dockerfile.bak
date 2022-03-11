@@ -1,10 +1,5 @@
-FROM alpine:latest
+FROM node:16-alpine
 MAINTAINER MaxDuke <maxduke@gmail.com>
-
-RUN set -ex \
-    && apk update \
-    && apk upgrade \
-    && apk add --no-cache --update nodejs npm
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -14,7 +9,7 @@ WORKDIR /usr/src/app
 # where available (npm@5+)
 COPY package*.json ./
 
-RUN npm install --production
+RUN npm install
 # If you are building your code for production
 # RUN npm ci --only=production
 
@@ -22,4 +17,4 @@ RUN npm install --production
 COPY . .
 
 EXPOSE 6789
-CMD [ "npm", "start" ]
+CMD [ "node", "index.js" ]
